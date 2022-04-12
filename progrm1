@@ -1,0 +1,113 @@
+create table student(rollno int,name varchar(10),address varchar(30),totalmark int);
+Query OK, 0 rows affected (0.23 sec)
+MariaDB [db]> insert into student values(1,'preema','angamaly',80);
+Query OK, 1 row affected (0.04 sec)
+
+MariaDB [db]> insert into student values(2,'reshma','idukki',70);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [db]> insert into student values(3,'salshi','thrissur',60);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [db]> insert into student values(4,'fathima','ernamkulam',50);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [db]> insert into student values(5,'aishwarya','thrissur',40);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [db]> select * from student;
++--------+-----------+------------+-----------+
+| rollno | name      | address    | totalmark |
++--------+-----------+------------+-----------+
+|      1 | preema    | angamaly   |        80 |
+|      2 | reshma    | idukki     |        70 |
+|      3 | salshi    | thrissur   |        60 |
+|      4 | fathima   | ernamkulam |        50 |
+|      5 | aishwarya | thrissur   |        40 |
++--------+-----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+MariaDB [db]> select rollno,address from student;
++--------+------------+
+| rollno | address    |
++--------+------------+
+|      1 | angamaly   |
+|      2 | idukki     |
+|      3 | thrissur   |
+|      4 | ernamkulam |
+|      5 | thrissur   |
++--------+------------+
+5 rows in set (0.00 sec)
+
+MariaDB [db]> select name,totalmark from student where totalmark>60;
++--------+-----------+
+| name   | totalmark |
++--------+-----------+
+| preema |        80 |
+| reshma |        70 |
++--------+-----------+
+2 rows in set (0.00 sec)
+
+MariaDB [db]> alter table student add Grade varchar(10);
+Query OK, 0 rows affected (0.34 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db]> select * from student;
++--------+-----------+------------+-----------+-------+
+| rollno | name      | address    | totalmark | Grade |
++--------+-----------+------------+-----------+-------+
+|      1 | preema    | angamaly   |        80 | NULL  |
+|      2 | reshma    | idukki     |        70 | NULL  |
+|      3 | salshi    | thrissur   |        60 | NULL  |
+|      4 | fathima   | ernamkulam |        50 | NULL  |
+|      5 | aishwarya | thrissur   |        40 | NULL  |
++--------+-----------+------------+-----------+-------+
+5 rows in set (0.00 sec)
+
+MariaDB [db]> alter table student drop address;
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [db]> select * from student;
++--------+-----------+-----------+-------+
+| rollno | name      | totalmark | Grade |
++--------+-----------+-----------+-------+
+|      1 | preema    |        80 | NULL  |
+|      2 | reshma    |        70 | NULL  |
+|      3 | salshi    |        60 | NULL  |
+|      4 | fathima   |        50 | NULL  |
+|      5 | aishwarya |        40 | NULL  |
++--------+-----------+-----------+-------+
+
+MariaDB [db]> update student set Grade='B' where rollno=2;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db]> update student set Grade='C' where rollno=3;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db]> update student set Grade='D' where rollno=4;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [db]> update student set Grade='E' where rollno=5;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+MariaDB [db]> select * from student;
++--------+-----------+-----------+-------+
+| rollno | name      | totalmark | Grade |
++--------+-----------+-----------+-------+
+|      1 | preema    |        80 | A     |
+|      2 | reshma    |        70 | B     |
+|      3 | salshi    |        60 | C     |
+|      4 | fathima   |        50 | D     |
+|      5 | aishwarya |        40 | E     |
++--------+-----------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
