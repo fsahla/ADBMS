@@ -1,0 +1,43 @@
+13. Write a shell script to accept empno,empname,basic
+. Find DA,HRA,TA,PF using
+following rules. Display empno, empname, basic,
+ DA,HRA,PF,TA,GROSS SAL and
+NETSAL. Also store all details in a file called emp.dat
+Rules:
+HRA is 18% of basic if basic > 5000 otherwise 550
+DA is 35% of basic
+PF is 13% of basic
+IT is 14% of basic
+TA is 10% of basic
+
+
+echo "Enter the EmployeeID (empno)"
+read empno
+echo "Enter the Name of Employee"
+read empname
+echo "enter the basic salary:"
+read bsal
+bsalp=`expr $bsal / 100`
+if [ $bsal -gt 5000 ]
+then
+hra=`expr $bsalp \* 18`
+else
+hra=550
+fi
+da=`expr $bsalp \* 35`
+pf=`expr $bsalp \* 13`
+it=`expr $bsalp \* 14`
+ta=`expr $bsalp \* 10`
+gross=`expr $bsal + $hra + $da + $ta`
+netsal=`expr $gross - $pf - $it`
+echo "Empno : $empno"|tee cat >> emp.dat
+echo "Empname : $empname"|tee cat >> emp.dat
+echo "Basic : $bsal"|tee cat >> emp.dat
+echo "HRA(House Rent Allowance): $hra"|tee cat >> emp.dat
+echo "PF (Provident fund):$pf"|tee cat >> emp.dat
+echo "TA (Travalling Allowance): $ta"|tee cat >> emp.dat
+echo "IT (Income Tax) : $it"|tee cat >> emp.dat
+echo "Gross salary : $gross"|tee cat >> emp.dat
+
+echo "netsalary : $netsal"|tee cat >>emp.dat
+
