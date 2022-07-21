@@ -1,0 +1,49 @@
+echo "Enter the EmployeeID (empno)"
+read empno
+echo "Enter the Name of Employee"
+read empname
+echo "enter the basic salary:"
+read bsal
+bsalp=`expr $bsal / 100`
+if [ $bsal -gt 5000 ]
+then
+hra=`expr $bsalp \* 18`
+else
+hra=550
+fi
+da=`expr $bsalp \* 35`
+pf=`expr $bsalp \* 13`
+it=`expr $bsalp \* 14`
+ta=`expr $bsalp \* 10`
+gross=`expr $bsal + $hra + $da + $ta`
+netsal=`expr $gross - $pf - $it`
+echo "Empno : $empno"|tee cat >> emp.dat
+echo "Empname : $empname"|tee cat >> emp.dat
+echo "Basic : $bsal"|tee cat >> emp.dat
+echo "HRA(House Rent Allowance): $hra"|tee cat >> emp.dat
+echo "PF (Provident fund):$pf"|tee cat >> emp.dat
+echo "TA (Travalling Allowance): $ta"|tee cat >> emp.dat
+echo "IT (Income Tax) : $it"|tee cat >> emp.dat
+echo "Gross salary : $gross"|tee cat >> emp.dat
+
+echo "netsalary : $netsal"|tee cat >>emp.dat
+
+Notes:
+
+TA = BASIC SAL*PERCENTAGE/100
+DA= BASIC SAL*PERCENTAGE/100
+HRA= BASIC SAL*PERCENTAGE/100
+GROSS SAL =BASIC SAL+ TA + DA + HRA
+PF= GROSS SAL*PERCENTAGE/100
+NET SAL = GROSS SAL -( PF + LIC+IT)
+Gross Salary: is the amount of salary paid after adding all benefits and allowances and
+before deducting any tax
+Net Salary: is what is left of your salary after deductions have been made.
+Take Home Salary: Is usually the Net Salary unless there are some personal deductions like
+loan or bond re-payments.
+Cost to Company: Companies use the term “Cost to Company” to calculate the total cost to
+employ. I.e. all the costs associated with an employment contract. Major part of CTC
+comprises of compulsory deductibles. These include deductions for provident fund, medical
+insurance etc. They form a part of your compensation structure but you not get them as a part
+of in-hand salary. As such, although it increases your CTC, it does not increment your net
+salary.
